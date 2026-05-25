@@ -15,8 +15,7 @@ for t in time_steps:
   noise = random.gauss(0, 0.15)
   raw_data.append(sine_value + noise)
 
-# Making the Filter
-window_size = 5
+window_size = 20
 filtered_data = []
 
 for i in range (len(raw_data)):
