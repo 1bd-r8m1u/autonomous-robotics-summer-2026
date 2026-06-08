@@ -6,3 +6,20 @@ Sensor B reports a distance of 2.1m with a variance of 0.01.
 Without Calculating the exact final position, which sensor's reading should the robot's state estimator trust more heavily and why does its variance curve dictate that decision
 
 Sensor B is more accurate since its variance is lower and the lower the variance, the more precise the sensor; Its variance curve dictates this since its curve is more narrow and higher, meaning the robot has a smalelr range to assume its position out of.
+
+Reading Uncertantiy-Aware Visual-Inertial SLAM with Volumetric Occupancy Mapping - themoonlight.io
+
+First of all what is SLAM; Silmultanious Localization and Mapping - Exists as a a solution to the chicken and egg problem made by localisation and mapping;
+
+- A map is required to localize the robot accurately.
+- A localised pose is required to build a map. 
+
+This confrence paper is a summery of a SLAM system that couples localisation with volumetric occupancy mapping to fuse depth and uncertantiy predictions.
+
+"~ Our method is rigourously uncertantiy aware: first we use depth and uncertanity predictions from a deep network...fuse motion stereo...provides depth information aross a range of baselines...increasing mapping accuracy"
+
+A map is a the environments structure from a known location.
+A pose is the estimation of a robots coordiantes (x,y,z) and oriantation (roll, pitch, yaw).
+A voxel is a 3D data poiny on a regular grid, analogous to a 2D pixel
+
+[Sensor correction loops are fun because the write over specific variables based on new sensor data, and they allow and fix slight mechanical issues that could be out of the engineers hands.]
