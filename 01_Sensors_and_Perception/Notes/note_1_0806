@@ -5,3 +5,4 @@ Sensor B reports a distance of 2.1m with a variance of 0.01.
 
 Without Calculating the exact final position, which sensor's reading should the robot's state estimator trust more heavily and why does its variance curve dictate that decision
 
+Sensor B is more accurate since its variance is lower and the lower the variance, the more precise the sensor; Its variance curve dictates this since its curve is more narrow and higher, meaning the robot has a smalelr range to assume its position out of.
