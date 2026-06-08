@@ -1,0 +1,6 @@
+A Mobile Robot is equipped with 2 independant rangefinders pointing at the same target.
+
+Sensor A reports a distance of 2.0m with a variance of 0.04.
+Sensor B reports a distance of 2.1m with a variance of 0.01.
+
+Without Calculating the exact final position, which sensor's reading should the robot's state estimator trust more heavily and why does its variance curve dictate that decision
