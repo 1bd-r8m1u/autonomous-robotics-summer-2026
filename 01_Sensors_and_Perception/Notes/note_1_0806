@@ -1,3 +1,5 @@
+Q:
+
 A Mobile Robot is equipped with 2 independant rangefinders pointing at the same target.
 
 Sensor A reports a distance of 2.0m with a variance of 0.04.
@@ -5,11 +7,13 @@ Sensor B reports a distance of 2.1m with a variance of 0.01.
 
 Without Calculating the exact final position, which sensor's reading should the robot's state estimator trust more heavily and why does its variance curve dictate that decision
 
-Sensor B is more accurate since its variance is lower and the lower the variance, the more precise the sensor; Its variance curve dictates this since its curve is more narrow and higher, meaning the robot has a smalelr range to assume its position out of.
+A:
+
+Sensor B is more accurate since its variance is lower and the lower the variance, the more precise the sensor; Its variance curve dictates this since its curve is more narrow and higher, meaning the robot has a smaller range to choose from. 
 
 Reading Uncertantiy-Aware Visual-Inertial SLAM with Volumetric Occupancy Mapping - themoonlight.io
 
-First of all what is SLAM; Silmultanious Localization and Mapping - Exists as a a solution to the chicken and egg problem made by localisation and mapping;
+First of all what is SLAM; Silmultanious Localization and Mapping - Exists as a solution to the chicken and egg problem made by localisation and mapping;
 
 - A map is required to localize the robot accurately.
 - A localised pose is required to build a map. 
