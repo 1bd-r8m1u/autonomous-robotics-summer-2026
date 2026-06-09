@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 # 1. Setup simulated true state and noisy measurements
 true_value = 25.0  # e.g., Constant target temperature
-num_steps = 50
+num_steps =100
 np.random.seed(42)
 
 # Generate noisy sensor measurements (variance = 4.0)
@@ -12,8 +12,8 @@ measurements = true_value + np.random.normal(0, np.sqrt(sensor_variance), num_st
 
 # 2. Initialize Kalman Filter variables
 initial_estimate = 20.0  # The robot starts with a bad guess
-initial_variance = 10.0  # The robot is highly uncertain at first
-motion_variance = 0.05   # The target doesn't move much, very low process noise
+initial_variance = 20.0  # The robot is highly uncertain at first
+motion_variance = 0.1   # The target doesn't move much, very low process noise
 
 # Arrays to store results for plotting
 estimates = []
@@ -50,4 +50,4 @@ plt.title('1D Kalman Filter Implementation')
 plt.xlabel('Time Step')
 plt.ylabel('Value')
 plt.legend()
-plt.savefig('kalman_plot_1.png')
+plt.savefig('kalman_plot_2.png')
