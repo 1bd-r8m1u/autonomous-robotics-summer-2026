@@ -33,7 +33,7 @@ for z in measurements:
     # TODO: Calculate Kalman Gain (K)
     kalman_gain = prediction_variance / (prediction_variance + sensor_variance)
     # TODO: Calculate current_estimate using the update equation
-    current_estimate = prediction + kalman_gain * (measurements - prediction)
+    current_estimate = prediction + kalman_gain * (z - prediction)
     # TODO: Calculate current_variance using the covariance update equation
     current_variance = (1 - kalman_gain) * prediction_variance
     
