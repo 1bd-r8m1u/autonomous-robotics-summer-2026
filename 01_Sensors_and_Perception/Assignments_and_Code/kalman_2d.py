@@ -26,8 +26,10 @@ H = np.array([[1.0, 0.0]])
 
 R = np.array([[sensor_variance]])
 
-Q = np.array([[0.01, 0.0],
-              [0.0, 0.01]])
+# Old_Q ([0.01, 0],[0.0, 0.01])
+
+Q = np.array([[0.05, 0.0],
+              [0.05, 0.05]])
 
 I = np.eye(2)
 
@@ -75,4 +77,4 @@ ax2.set_ylabel('Velocity (m/s)')
 ax2.set_xlabel('Time (seconds)')
 ax2.legend()
 
-plt.savefig('kalman_2d_1.png')
+plt.savefig('kalman_2d_2.png')
