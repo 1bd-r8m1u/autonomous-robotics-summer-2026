@@ -16,26 +16,19 @@ class OdometryTracker:
         self.history_y = [0.0]
 
     def forward_kinematics(self, omega_L, omega_R):
-        """
-        Convert raw wheel encoder speeds into chassis velocities.
-        """
+        """Convert raw wheel encoder speeds into chassis velocities."""
         v = (self.r * (omega_R + omega_L)) / 2.0
         omega = (self.r * (omega_R - omega_L)) / self.L
         return v, omega
 
     def update_state(self, v, omega, dt):
-        """
-        Update the robot's X, Y, and Theta coordinates using Dead Reckoning.
-        """
+        """Update the robot's X, Y, and Theta coordinates using Dead Reckoning."""
         current_theta = self.state[2]
         
-        x_new = self.state[0] + v * math.cos(current_theta) * dt
-        y_new = self.state[1] + v * math.sin(current_theta) * dt
-        theta_new = current_theta + omega * dt
-        
-        new_x = 0.0
-        new_y = 0.0
-        new_theta = 0.0
+        # Non-Linear State Equations
+        new_x = self.state[0] + v * math.cos(current_theta) * dt
+        new_y = self.state[1] + v * math.sin(current_theta) * dt
+        new_theta = current_theta + omega * dt
         
         self.state = np.array([new_x, new_y, new_theta])
         
@@ -50,22 +43,21 @@ if __name__ == "__main__":
     dt = 0.1
     
     # Simulated encoder data (rad/s) for 50 time steps
-    # The right wheel spins slightly slower, simulating the error discussed previously
+    # The right wheel spins slightly slower, simulating slip
     encoder_left = [10.0] * 50
     encoder_right = [9.5] * 50
     
     for w_L, w_R in zip(encoder_left, encoder_right):
-        # Step 1: Read encoders and calculate velocities
         v, omega = robot.forward_kinematics(w_L, w_R)
-        
-        # Step 2: Update internal map
         robot.update_state(v, omega, dt)
         
     # Plot the resulting internal map trajectory
+    plt.figure(figsize=(8, 6))
     plt.plot(robot.history_x, robot.history_y, label="Dead Reckoning Path", color='b')
     plt.title("Odometry Tracking (Wheel Slip Simulation)")
     plt.xlabel("X Position (meters)")
     plt.ylabel("Y Position (meters)")
     plt.legend()
     plt.grid()
-    plt.savefig("odemetry_tracker_1")
+    plt.savefig("odometry_tracker_1.png")
+    plt.show()
